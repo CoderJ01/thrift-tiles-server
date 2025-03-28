@@ -40,7 +40,7 @@ router.post('/purchase', (req, res) => {
               "currency": "USD",
               "total": req.body.total
           },
-          "description": "Hat for the best team ever"
+          "description": "Items for Thrift Tiles customer"
       }]
   };
 
