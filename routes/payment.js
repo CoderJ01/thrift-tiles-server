@@ -4,6 +4,7 @@ const router = require('express').Router();
 // other Node.js packages
 const paypal = require('paypal-rest-sdk');
 
+// payment configuration
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': process.env.PAYPAL_CLIENT_ID,
@@ -13,6 +14,7 @@ paypal.configure({
 router.post('/purchase', (req, res) => {
     let items = [];
 
+    // variables 'name', 'sku', etc. are needed for the PayPal payment json
     for(let i = 0; i < req.body.items.length; i++) {
         items[i] = {
             "name": req.body.items[i].name,

@@ -16,16 +16,17 @@ const PORT = 3001;
 app.use(express.json());
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); 
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); 
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
-    next();
-  });
+  res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL); 
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); 
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
+  next();
+});
 
 app.use('/api', routes);
 
+// integrate object-relational mapper (i.e. Sequelize) with Express
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, console.log(`Listening on PORT ${PORT}...`));
+  app.listen(PORT, console.log(`Listening on PORT ${PORT}...`));
 });
 
 module.exports = app;

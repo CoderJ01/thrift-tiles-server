@@ -1,3 +1,4 @@
+// generate random string of digits for the username
 const generateStringOfDigits = (length) => {
     let random_string = '';
 
