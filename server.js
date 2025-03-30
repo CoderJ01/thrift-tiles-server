@@ -15,8 +15,17 @@ const PORT = 3001;
 
 app.use(express.json());
 
+let allowed_frontend_url = '';
+
+if(process.env.NODE_ENV === 'development') {
+  allowed_frontend_url = process.env.LOCALHOST;
+}
+else if(process.env.NODE_ENV === 'production') {
+  allowed_frontend_url = process.env.DEPLOYED_FRONTEND_URL;
+}
+
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL); 
+  res.setHeader('Access-Control-Allow-Origin', allowed_frontend_url); 
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); 
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
   next();
