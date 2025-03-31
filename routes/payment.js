@@ -45,9 +45,6 @@ router.post('/checkout', (req, res) => {
           "description": "Items for Thrift Tiles customer"
       }]
     };
-    console.log(create_payment_json);
-
-    // console.log(req.query.PayerID);
 
     router.get('/success', (req, res) => {
         const payerId = req.query.PayerID;
@@ -78,7 +75,8 @@ router.post('/checkout', (req, res) => {
         } else {
             for(let i = 0;i < payment.links.length;i++){
               if(payment.links[i].rel === 'approval_url'){
-                res.redirect(payment.links[i].href);
+                // res.redirect(payment.links[i].href); // res.redirect does not work due to some CORS related issue
+                res.send({ link: payment.links[i].href });
               }
             }
         }
