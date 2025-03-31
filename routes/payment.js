@@ -19,7 +19,8 @@ router.post('/checkout', (req, res) => {
         items[i] = {
             "name": req.body.items[i].name,
             "sku": req.body.items[i].id,
-            "price": req.body.items[i].cost,
+            // for live environment, replace 0 with req.body.items[i].cost 
+            "price": 0,
             "currency": "USD",
             "quantity": req.body.items[i].amount
         }
