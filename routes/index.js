@@ -10,6 +10,6 @@ const paymentRoutes = require('./payment');
 router.use('/users', userRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/products', productRoutes);
-router.use('/payment', paymentRoutes);
+router.use('/purchase-items', paymentRoutes);
 
 module.exports = router;

@@ -11,7 +11,7 @@ paypal.configure({
     'client_secret': process.env.PAYPAL_SECRET_KEY
 });
 
-router.post('/purchase', (req, res) => {
+router.post('/checkout', (req, res) => {
     let items = [];
 
     // variables 'name', 'sku', etc. are needed for the PayPal payment json
@@ -44,7 +44,10 @@ router.post('/purchase', (req, res) => {
           },
           "description": "Items for Thrift Tiles customer"
       }]
-  };
+    };
+    console.log(create_payment_json);
+
+    // console.log(req.query.PayerID);
 
     router.get('/success', (req, res) => {
         const payerId = req.query.PayerID;
