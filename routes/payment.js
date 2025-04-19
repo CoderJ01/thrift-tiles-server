@@ -41,7 +41,7 @@ router.post('/checkout', (req, res) => {
           },
           "amount": {
               "currency": "USD",
-              "total": req.body.total
+              "total": 0 // use req.body.total in live environment
           },
           "description": "Items for Thrift Tiles customer"
       }]
@@ -56,7 +56,7 @@ router.post('/checkout', (req, res) => {
             "transactions": [{
                 "amount": {
                     "currency": "USD",
-                    "total": req.body.total
+                    "total": 0 // use req.body.total in live environment 
             }}]
         };
   
